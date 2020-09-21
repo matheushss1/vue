@@ -16,7 +16,6 @@
         </ul>
       </div>
     </nav>
-    <router-view />
   </div>
 </template>
 <script>
