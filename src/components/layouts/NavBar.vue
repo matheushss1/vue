@@ -5,13 +5,13 @@
         <a v-bind:href="url || '#'" class="brand-logo">{{logo|| 'Site'}}</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
-            <a href="sass.html">Sass</a>
+            <a href="sass.html">Home</a>
           </li>
           <li>
-            <a href="badges.html">Components</a>
+            <a href="badges.html">Contato</a>
           </li>
           <li>
-            <a href="collapsible.html">JavaScript</a>
+            <a href="collapsible.html">Sobre</a>
           </li>
         </ul>
       </div>
