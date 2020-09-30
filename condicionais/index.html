@@ -18,11 +18,17 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" />
-      <button>Add Goal</button>
-      <p>No goals have been added yet - please start adding some!</p>
+      <input type="text" v-model="enteredGoalValue"/>
+      <button @click="addGoal">Add Goal</button>
+      <!-- LEMBRANDO QUE v-else só deve ser inserido no ELEMENTO SEGUINTE ao utilizado o v-if -->
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <!-- PODE SER UTILIZADO v-show AO INVÉS DE v-if -->
+        <!-- A DIFERENÇA É QUE v-show apenas oculta ou mostra o item, mantendo ele no DOM enquanto v-if REMOVE OU INSERE O ITEM NO DOM -->
+        <li v-for="(goal, index) in goals" @click="removeGoal(index)">{{index + 1}}-) {{goal}}</li>
+      </ul>
       <ul>
-        <li>Goal</li>
+        <li v-for="(value, key) in {Nome: 'Matheus', Idade: 23}">{{key}}: {{value}}</li>
       </ul>
     </section>
   </body>
