@@ -14,22 +14,16 @@
   </head>
   <body>
     <header>
-      <h1>Vue Dynamic Styling</h1>
+      <h1>Vue Course Goals</h1>
     </header>
-    <section id="styling">
-      <div 
-       :class="boxAselecionado ? 'demo active' : 'demo'"
-       @click="boxSelecionado('A')"
-      ></div>
-      <div
-       :class="{demo: true, active: boxBselecionado}"
-       @click="boxSelecionado('B')"
-      ></div>
-      <div
-       class="demo"
-       :class="{active: boxCselecionado}"
-       @click="boxSelecionado('C')"
-      ></div>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" />
+      <button>Add Goal</button>
+      <p>No goals have been added yet - please start adding some!</p>
+      <ul>
+        <li>Goal</li>
+      </ul>
     </section>
   </body>
 </html>
