@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo Responsivo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Será que você é capaz de vencer o monstro da responsividade?</h1>
+    </header>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Vida do Monstro</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="monsterBarStyle"></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Sua vida</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="playerBarStyle"></div>
+        </div>
+      </section>
+      <section class="container" v-if="winner">
+        <h2>Game Over!</h2>
+        <h3 v-if="winner === 'player'">Parabéns, você venceu! </h3>
+        <h3 v-else-if="winner === 'monster'">Você perdeu!</h3>
+        <h3 v-else-if="winner === 'draw'">COMO ASSIM? DEU EMPATE!</h3>
+        <button @click="startGame">Iniciar Novo Jogo</button>
+      </section>
+      <section id="controls" v-else>
+        <button @click="attackMonster">Ataque</button>
+        <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">Ataque Especial</button>
+        <button @click="healPlayer">Curar</button>
+        <button @click="surrender">Render-se</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Histórico de Batalha</h2>
+        <ul>
+          <li v-for="logMessage in logMessages">
+            <span :class="{'log--player': logMessage.actionBy === 'player', 'log--monster': logMessage.actionBy === 'monster'}">
+              {{ logMessage.actionBy === 'player' ? 'Jogador' : 'Monstro'}}
+            </span>
+            <span v-if="logMessage.actionType === 'heal'"> se curou em <span class="log--heal">{{logMessage.actionValue}}!</span></span>
+            <span v-else> atacou e causou <span class="log--damage">{{logMessage.actionValue}} de dano!</span></span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
